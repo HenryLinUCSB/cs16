@@ -139,6 +139,6 @@ void AllSearches( int array[], int array_size){
     if(sequent != -1)                       // if index is not = 1 then it is found, and the index of the found number position from arr[] would be printed
       cout << "Found at index: " << sequent << endl;
     else               // if i==-1, which is from the seqsearch, then the target is not found in the Array
-      cout << "Nout Found!" << endl;
+      cout << "Not Found!" << endl;
   }
 }
