@@ -1,3 +1,10 @@
+/*
+/ Skeleton File for ARRAYS.CPP for CS16, 2020, UCSB
+/ Copyright 2020 by Ziad Matni. All rights reserved.
+/
+*/
+
+
 // DO NOT MODIFY THESE NEXT 6 LINES - DO NOT ADD TO THEM
 #include <iostream> // for cout, cin
 #include <fstream>  // for ifstream
@@ -56,22 +63,22 @@ int main( )
 
 
 void print_array(int arr[], int asize){
-  for(int i = 0; i < asize-1; i++){
+  for(int i = 0; i < asize-1; i++){   // this will print out 1 element before the last term with , after
       cout << arr[i] << ", ";
   }
-  cout << arr[asize-1] << endl;
+  cout << arr[asize-1] << endl; // The last term of this would not have a comma, instead it will get an end line
   
   
 }
 
 int maxArray(int arr[],int asize){
   for(int i = 0 ; i < asize; i++)
-    if(arr[0] < arr[i])
-      arr[0] = arr[i];
-  return arr[0];
+    if(arr[0] < arr[i]) //If the array term is less than arr[i], it means that arr[i] is greater
+      arr[0] = arr[i]; // since arr[i] is greater than every other element, it'll be the greatest
+  return arr[0];  // so I set arr[0]=arr[i] and print out the number
 }
 
-int minArray(int arr[], int asize){
+int minArray(int arr[], int asize){ // same thing as above but with opposite sign which shows the lowest element
   for(int i = 0; i < asize ; i++)
     if(arr[0] > arr[i])
       arr[0] = arr[i];
@@ -80,8 +87,9 @@ int minArray(int arr[], int asize){
 
 int sumArray(int arr[], int asize){
   int total = 0;
-  for (int i = 0; i < asize; i++)
+  for (int i = 0; i < asize; i++){ // for every element, we add the element into total
     total += arr[i];
+  }
   return total;
 }
 
@@ -95,17 +103,19 @@ void evensArray(int arr[], int asize){
 void primesArray(int arr[], int asize){
   for(int i = 0; i<asize; i++){ 
     int x = 1;                           // declare variable x = 1
-    if(arr[i] > 1){                      // prime numbers cannot be negative or 0 or 1
-      for (int j = 2; j <= arr[i]/2; j++){  //prime number starts with 2, if the number%j == 0, it is not a prime number
-        if(arr[i]%j == 0){
-          x = 0;
-          break;
+    if(arr[i] <= 1){   // if it is any number less than or equal to 1, then it is not a prime number
+      x = 0;
+    }// prime numbers cannot be negative or 0 or 1
+    for (int j = 2; j < arr[i]/2; j++){  //prime number starts with 2, if the number%j == 0, it is not a prime number..
+      if(arr[i]%j == 0){                 // prime number cannot be divided by half of itself, since it can only be divisible by
+        x = 0;                           // 1 or itself. 
+        break;
       }
     }
-    if(x==1)
+    if(x==1)                             // if x == 1 (another way of saying true where 0 is false) then it would print the prime number  
       cout << arr[i] << ", ";
     }
-  }
+
   cout << "end" << endl;
        
     
