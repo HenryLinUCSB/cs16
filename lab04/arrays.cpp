@@ -72,17 +72,19 @@ void print_array(int arr[], int asize){
 }
 
 int maxArray(int arr[],int asize){
+  int max = 0;
   for(int i = 0 ; i < asize; i++)
-    if(arr[0] < arr[i]) //If the array term is less than arr[i], it means that arr[i] is greater
-      arr[0] = arr[i]; // since arr[i] is greater than every other element, it'll be the greatest
-  return arr[0];  // so I set arr[0]=arr[i] and print out the number
+    if(max < arr[i]) //If the array term is less than arr[i], it means that arr[i] is greater
+      max = arr[i]; // since arr[i] is greater than every other element, it'll be the greatest
+  return max;  // so I set arr[0]=arr[i] and print out the number
 }
 
-int minArray(int arr[], int asize){ // same thing as above but with opposite sign which shows the lowest element
+int minArray(int arr[], int asize){
+  int min = 0; // same thing as above but with opposite sign which shows the lowest element
   for(int i = 0; i < asize ; i++)
-    if(arr[0] > arr[i])
-      arr[0] = arr[i];
-  return arr[0];
+    if(min > arr[i])
+      min = arr[i];
+  return min;
 }
 
 int sumArray(int arr[], int asize){
