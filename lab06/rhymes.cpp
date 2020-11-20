@@ -46,8 +46,7 @@ int main(){
 
 
 
-
-
+// This function I want to clean up the poem with no punctuation
 void wordcleanup(ifstream &ifs, ofstream &outstream, string filename){
   ifs.open(filename);
   outstream.open("clean.txt");
@@ -90,7 +89,8 @@ void cleanuptostring(ifstream &ifs, string clean, string &lines){
     
   ifs.close(); 
 }
-
+// This Function, I will extract the last words from each line, using last index and counts backwards until
+// space
 void lastword(string lines, string &previousWord, string &LastWord){
   int LastIndex;
   int indexLine(1);
@@ -103,15 +103,18 @@ void lastword(string lines, string &previousWord, string &LastWord){
       while((lines[LastIndex] == ' ')||(lines[LastIndex]== '\n')){
 	LastIndex--;
       }
+      LastWord = " ";
       // To get the LastWord, this goes backwards until a space character is found.
       while(lines[LastIndex] != ' '){
 	LastWord = lines[LastIndex] + LastWord;
 	LastIndex--;
       }
+      // This will run the boolean wordcomparison and checks if the last two character of the words are
+      // the same, if it is, then the boolean will return true and cout the rhyme words/
       if(previousWord != " "){
 	if(WordComparison(LastWord, previousWord)){
 	  pairs++;
-	  cout << previousWord << " and " << LastWord << endl;
+	  cout << previousWord << "and " << LastWord << endl;
 	}
       }
       previousWord = LastWord;
@@ -119,22 +122,25 @@ void lastword(string lines, string &previousWord, string &LastWord){
       indexLine++;
     }
   }
+  // Calculating the rhyme density of the text.
+  double doublepairs;
+  double doubleindexline;
+  double density;
+  doublepairs = pairs;
+  doubleindexline = indexLine;
+  density = doublepairs/(doubleindexline-1.00);
   if(pairs==1){
-    cout << "There are " << pairs << " pair of rhyming words." << endl;
+    cout << "There is " << pairs << " pair of rhyming words." << endl;
+    cout << "There are " << indexLine-1 << " lines in this poem, so the rhyme-line density is: " << density;
   }
   else if(pairs > 1){
     cout << "There are " << pairs << " pairs of rhyming words." << endl;
+    cout << "There are " << indexLine-1 << " lines in this poem, so the rhyme-line density is: " << density;
   }
   else{
     cout << "No rhymes found." << endl;
+    cout << "There are " << indexLine-1 << " lines in this poem.";
   }
-  double doublepairs;
-  double doubleIndexLine;
-  double density;
-  doublepairs = pairs;
-  doubleIndexLine = indexLine;
-  density = doublepairs/doubleIndexLine;
-  cout << "There are " << indexLine-1 << " lines in this poem, so the rhyme-line density is: " << density;
 }
 
 bool WordComparison(string previousWord, string LastWord){
