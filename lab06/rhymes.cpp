@@ -8,7 +8,9 @@
 using namespace std;
 
 void wordcleanup(ifstream &ifs, ofstream &outstream, string filename);
-void lastword(ifstream &ifs, string clean);
+void cleanuptostring(ifstream &ifs, string clean, string &lines);
+void lastword(string lines, string &previousWord, string &LastWord);
+bool WordComparison(string previousWord, string LastWord);
 
 int main(){
   // should output 2 decimal points for rhym line density.
@@ -33,8 +35,18 @@ int main(){
 
   wordcleanup(ifs, outstream, filename);
   string clean = "clean.txt"; // the new file for cleaned poem
-  lastword(ifs, clean);
+  string lines;
+  cleanuptostring(ifs, clean, lines);
+  string previousWord = " ";
+  string LastWord = " ";
+  lastword(lines, previousWord, LastWord);
 }
+
+
+
+
+
+
 
 void wordcleanup(ifstream &ifs, ofstream &outstream, string filename){
   ifs.open(filename);
@@ -52,18 +64,92 @@ void wordcleanup(ifstream &ifs, ofstream &outstream, string filename){
   outstream.close();
 }
 
-void lastword(ifstream &ifs, string clean){
+void cleanuptostring(ifstream &ifs, string clean, string &lines){
   ifs.open(clean);
-  int count(0);
-  string next;
-  while(ifs >> next){
-    count++;
-  }
-  ifs.close();
-  cout << count;
-  
-}
+  string cleanuplines;
+  char c;
+  ifs.get(c);
+  char lastchar;
+  // converting the cleaned up file to string for lastword...
+  // I'm adding all the characters including \n into string line
+  while(!ifs.eof()){
+    if( c== '\n' && lastchar == '\n'){
+      lastchar = '\n';
+    }
+    else{
+      cleanuplines += c;
+      if( c== '\n'){
+	lastchar = '\n';
+      }
+    }
     
+    lastchar = c;
+    ifs.get(c);
+  }
+  lines = cleanuplines;
+    
+  ifs.close(); 
+}
+
+void lastword(string lines, string &previousWord, string &LastWord){
+  int LastIndex;
+  int indexLine(1);
+  int pairs(0);
+  int count(0);
+  for(int i = 0; i < lines.length(); i++){
+    if((lines[i] == '\n')||(i==lines.length()-1)){
+      LastIndex = i;
+      // Need to find the word before every end line
+      while((lines[LastIndex] == ' ')||(lines[LastIndex]== '\n')){
+	LastIndex--;
+      }
+      // To get the LastWord, this goes backwards until a space character is found.
+      while(lines[LastIndex] != ' '){
+	LastWord = lines[LastIndex] + LastWord;
+	LastIndex--;
+      }
+      if(previousWord != " "){
+	if(WordComparison(LastWord, previousWord)){
+	  pairs++;
+	  cout << previousWord << " and " << LastWord << endl;
+	}
+      }
+      previousWord = LastWord;
+      count++;
+      indexLine++;
+    }
+  }
+  if(pairs==1){
+    cout << "There are " << pairs << " pair of rhyming words." << endl;
+  }
+  else if(pairs > 1){
+    cout << "There are " << pairs << " pairs of rhyming words." << endl;
+  }
+  else{
+    cout << "No rhymes found." << endl;
+  }
+  double doublepairs;
+  double doubleIndexLine;
+  double density;
+  doublepairs = pairs;
+  doubleIndexLine = indexLine;
+  density = doublepairs/doubleIndexLine;
+  cout << "There are " << indexLine-1 << " lines in this poem, so the rhyme-line density is: " << density;
+}
+
+bool WordComparison(string previousWord, string LastWord){
+  if(previousWord.substr(previousWord.length()-2)==LastWord.substr(LastWord.length()-2)){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+    
+  
+      
+      
   
 
     
