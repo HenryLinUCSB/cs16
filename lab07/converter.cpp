@@ -5,18 +5,23 @@ using namespace std;
 string convertFromDec( unsigned int decnum, unsigned int base);
 
 int main(){
-  cout << "Enter positive decimal number (anything else quits): ";
-  string enteredvalue;
-  cin >> enteredvalue;
-  int decnum;
+  int decnum(1);
   int base(0);
-  decnum = stoi(enteredvalue); // learned in class when we did the string to integer conversion
-  if(decnum >0){
-    convertFromDec(decnum, base);
+  cout << "Enter positive decimal number (anything else quits): ";
+  while(decnum>0){
+    string enteredvalue;
+    cin >> enteredvalue;
+    decnum = stoi(enteredvalue); // learned in class when we did the string to integer conversion
+    if(decnum > 0){
+      string f = convertFromDec(decnum, base);
+      decnum = 1;
+      cout << "\nEnter positive decimal number (anything else quits): ";
+    }
+    else{
+      return 0;
+    }
   }
-  else{
-    return 0;
-  }
+  
   
 }
 string convertFromDec(unsigned int decnum, unsigned int base){
@@ -52,17 +57,19 @@ string convertFromDec(unsigned int decnum, unsigned int base){
     cout << octout[y];
   }
   // Hexa: inspired by https://www.w3resource.com/cpp-exercises/for-loop/cpp-for-loop-exercise-71.php
-  base = 16;
+  int hexadecimal = 16;
   char hex[] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
-  string hexaresult = "";
+  string hexaresult = " ";
   int integer = 0;
   cout << "\n" << decnumHex << " in hex is: ";
   while(decnumHex > 0){
-    integer = decnumHex%16;
+    integer = decnumHex % hexadecimal;
     hexaresult = hex[integer] + hexaresult;
-    decnumHex = decnumHex / base;
+    decnumHex = decnumHex / hexadecimal;
   }
-  return 0;
+  cout << hexaresult;
+  return hexaresult;
 }
+
     
  
