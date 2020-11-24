@@ -11,8 +11,9 @@ struct UndergradStudents{
   double GPA2;
   double GPA3;
   double GPA4;
+  int ID;
+  double avg;
 };
-UndergradStudents us[20];
 
 
 // DECLARE FUNCTIONS HERE.

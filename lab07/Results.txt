@@ -1,0 +1,22 @@
+
+These are the sorted results:
+ID# 1. Lin, Henry, Average GPA: 2.50
+ID# 2. X, , Average GPA: 0.00
+ID# 3. , , Average GPA: 0.00
+ID# 4. , , Average GPA: 0.00
+ID# 5. , , Average GPA: 0.00
+ID# 6. , , Average GPA: 0.00
+ID# 7. , , Average GPA: 0.00
+ID# 8. , , Average GPA: 0.00
+ID# 9. , , Average GPA: 0.00
+ID# 10. , , Average GPA: 0.00
+ID# 11. , , Average GPA: 0.00
+ID# 12. , , Average GPA: 0.00
+ID# 13. , , Average GPA: 0.00
+ID# 14. , , Average GPA: 0.00
+ID# 15. , , Average GPA: 0.00
+ID# 16. , , Average GPA: 0.00
+ID# 17. , , Average GPA: -0.00
+ID# 18. , , Average GPA: 0.00
+ID# 19. , , Average GPA: 0.00
+ID# 20. , , Average GPA: 0.00
