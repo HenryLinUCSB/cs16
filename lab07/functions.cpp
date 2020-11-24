@@ -15,7 +15,7 @@ void InitializeStructures(UndergradStudents us[], int &size) {
   int i = 0;
   int x = 1;
   // asks user for input, if he enters X the system quits or if # of students exceeds 20
-  while(x == 1 && size < 20){
+  while(x == 1 || size < 20){
     cout << "Enter first name for student " << i + 1 << " (or X to quit): ";
     getline(cin,us[i].FirstName);
     if(us[i].FirstName == "X"){
@@ -37,10 +37,12 @@ void InitializeStructures(UndergradStudents us[], int &size) {
       cin >> us[i].GPA4;
       us[i].ID = i+1;
       us[i].avg =(us[i].GPA1 + us[i].GPA2 + us[i].GPA3 + us[i].GPA4)/4.00;
-      cout << endl << endl;
+      cout << endl;
       i++;
       size++;
+      
     }
+    cin.get(); //from piazza forum
   }
 }
 
