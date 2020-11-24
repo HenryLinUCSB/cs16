@@ -9,7 +9,7 @@ using namespace std;
 #include "headers.h"
 #include "functions.cpp"
 
-int main() {
+int main(){
   UndergradStudents ObjArray[20];
   int ObjArraySize;
   ofstream outf;
