@@ -1,3 +1,6 @@
+#include <iostream>
+using namespace std;
+
 class AString {
   // You will need to declare:
   // 1. 2 constructors (see lab description for details)
@@ -10,10 +13,10 @@ class AString {
 public:
   
   AString();
-  AString(string new);
+  AString(string str);
   void getAString(); // Accessor because it is a "get"
   void cleanUp();
-  void countLetters(string StringValue);
+  void countLetters(int array[]);
 private:
   string StringValue;
   

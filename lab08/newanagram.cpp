@@ -11,7 +11,6 @@
 #include <iostream>
 #include <cstring>
 #include <cmath>
-#include "headers.h"
 #include "functions.cpp"
 using namespace std;
 
@@ -35,10 +34,10 @@ int main()
   // See lab description for details.
   sentence1.getAString();
   sentence1.cleanUp();
-  sentence1.countLetters();
+  sentence1.countLetters(ca1);
   sentence2.getAString();
   sentence2.cleanUp();
-  sentence2.countLetters();
+  sentence2.countLetters(ca2);
   
   bool badCount = compareCounts(ca1, ca2);
   if (badCount) {
