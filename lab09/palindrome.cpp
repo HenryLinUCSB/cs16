@@ -30,7 +30,8 @@ int main() {
 }
 
 // DEFINE THE FUNCTIONS HERE:
-// clean up function would only leave the alphabets 
+// clean up function would only leave the alphabets
+// I used the same method I used on the previous lab
 void cleanUp(string& p){
   string cleaned = "";
   //ascii for upper case (adding uppercase letters to cleaned)
@@ -40,7 +41,7 @@ void cleanUp(string& p){
     }
     // ascii for lower case (adding lowecase letters to cleaned)
     else if((p[i] <= 122) && (p[i] >= 97)){
-      cleaned += p[i];
+      cleaned += p[i]+32;
     }
   }
   //set p = cleaned, which is the cleaned up string which only contains letters

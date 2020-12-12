@@ -5,7 +5,6 @@
 #include <iostream>
 using namespace std;
 
-void getArray(ifstream& ifs, string FILENAME, int array[], int size);
 void sort(bool descending, int array, int size, int starting_index);
 void swap_values(int v1, int v2, int array[]);
 int find_index_of_swap(bool descending, int array[], int size, int starting_index);
@@ -17,3 +16,4 @@ int find_index_of_swap(bool descending, int array[], int size, int starting_inde
 const int MAXSIZE = 20;     // amount of integers in the file (you need this to declare your array size)
 const std::string FILENAME = "ArrayFile.txt";    // The file name with the integers
 
+void getArray(ifstream& ifs, string FILENAME, int array[], int size);
