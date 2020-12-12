@@ -4,6 +4,7 @@
 #include "headers.h"
 #include <iostream>
 using namespace std;
+// Inspired by lecture 11 
 void swap_values(int v1, int v2, int array[]){
   int temp;
   temp = array[v1];
@@ -12,7 +13,7 @@ void swap_values(int v1, int v2, int array[]){
   
 }
 
-
+// In this function, it would find the largest number index or smallest number index according to either descending or descending
 int find_index_of_swap(bool descending, int array[], int size, int starting_index){
   if(descending){
     //descending so that the first value is the largest
@@ -44,15 +45,18 @@ int find_index_of_swap(bool descending, int array[], int size, int starting_inde
 				
     
 }
-
+// In this function, it will call other two functions, find_index_of_swap and swapvalues... The recursion function begins with size == 0 will exit recursive loop. Since it is a void function, i cannot return 0, therefore I did return. 
 void sort(bool descending, int array[], int size, int starting_index){
   if(size == 0){
     return;
   }
+  // Storing the index of either the max value or minimum value
   int findindex = find_index_of_swap(descending, array, size, starting_index);
+  // if findindex is not the same as the starting index, we will swap the two.
   if(findindex != starting_index){
     swap_values(findindex, starting_index, array);
   }
+  // Then we will go back to the start until size the function is sorted either in increasing order or decreasing order.
   sort(descending, array, size, starting_index);
   
 }
