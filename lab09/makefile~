@@ -1,0 +1,3 @@
+all: selectionSort 
+selectionSort: selectionSort.cpp headers.h functions.cpp
+	g++ -o selectionSort selectionSort.cpp -Wall -std=c++11

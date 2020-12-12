@@ -1,6 +1,9 @@
 // Define your FOUR functions here (no more, no less):
 // First, the 3 functions for the selectionSort:
 // swap_values, find_index_of_swap, sort
+#include "headers.h"
+#include <iostream>
+using namespace std;
 void swap_values(int v1, int v2, int array[]){
   int temp;
   temp = array[v1];
@@ -42,27 +45,30 @@ int find_index_of_swap(bool descending, int array[], int size, int starting_inde
     
 }
 
-void sort(bool descending, int array, int size, int starting_index){
+void sort(bool descending, int array[], int size, int starting_index){
   if(size == 0){
-    return 0;
+    return;
   }
-  
-  
+  int findindex = find_index_of_swap(descending, array, size, starting_index);
+  if(findindex != starting_index){
+    swap_values(findindex, starting_index, array);
+  }
+  sort(descending, array, size, starting_index);
   
 }
 
 // Next, define the function getArray here.
 // This is the same one we used in Lab 4, so you can copy it over as is.
-void getArray(ifstream& in, string fname, int arr[], int size)
+void getArray(ifstream& ifs, string FILENAME, int array[], int size)
 {
-  in.open(fname);
-  if ( in.fail() )
+  ifs.open(FILENAME);
+  if ( ifs.fail() )
     {
       cerr << "Input file opening failed.\n";
       exit(1);
     }
   for (int i = 0; i < size; i++)
     {
-      in >> arr[i];
+      ifs >> array[i];
     }
 }

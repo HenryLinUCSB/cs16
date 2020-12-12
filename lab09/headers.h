@@ -3,12 +3,12 @@
 // swap_values, find_index_of_swap, sort
 // plus the function getArray
 #include <iostream>
-using namesapce std;
+using namespace std;
 
-void getArray(ifs ifs, string FILENAME, int array, int size);
+void getArray(ifstream& ifs, string FILENAME, int array[], int size);
 void sort(bool descending, int array, int size, int starting_index);
-void swap_values();
-void find_index_of_swap();
+void swap_values(int v1, int v2, int array[]);
+int find_index_of_swap(bool descending, int array[], int size, int starting_index);
 
 // Constants for the data file that your program is reading in
 // Only change these if you want to test your program with a different array file
